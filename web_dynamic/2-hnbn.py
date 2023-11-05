@@ -11,12 +11,14 @@ import uuid
 
 app = Flask(__name__)
 
+
 @app.teardown_appcontext
 def close_db(error):
     """ Remove the current SQLAlchemy Session """
     storage.close()
 
-@app.route('/0-hbnb/', strict_slashes=False)
+
+@app.route('/2-hbnb/', strict_slashes=False)
 def hbnb():
     """ HBNB is alive! """
     states = storage.all(State).values()
@@ -38,6 +40,7 @@ def hbnb():
                            places=places,
                            cache_id=uuid.uuid4())
 
+
 if __name__ == "__main__":
     """ Main Function """
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5001)
